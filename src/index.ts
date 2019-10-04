@@ -1,11 +1,9 @@
-// import {Mesh} from '../node_modules/three/build/three'
-// import {Mesh} from 'three'
-// import React from 'react';
+import { InitializeReact } from './react/ReactApp';
+import {initiateThree} from './three/ThreeApp'
 
-// console.log("Mesh",Mesh);
+InitializeReact().then(renderWebGL);
 
-import { calcCircle } from './math/circle'
-import { calculateRect } from './math/rect'
-
-console.log(calcCircle(10));
-console.log(calculateRect(10, 20));
+function renderWebGL(): void {
+  console.log('Rendering WebGL');
+  initiateThree();
+}
