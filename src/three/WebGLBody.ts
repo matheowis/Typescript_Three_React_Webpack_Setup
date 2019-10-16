@@ -1,5 +1,6 @@
 import { WebGLRenderer, PerspectiveCamera, Scene, Object3D } from 'three';
-
+// import {OrbitControls,MapControls} from './examples/OrbitControls';
+import OrbitControls from './examples/OrbitControls'
 interface IWebGL_Body {
   antialias?: boolean,
   fullScreen?: boolean,
@@ -26,6 +27,8 @@ class WebGLBody {
 
     this.container.append(this.renderer.domElement);
     this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+    
+    this.controls = new OrbitControls(this.camera,this.renderer.domElement);
     this.camera.position.z = cameraDistance;
 
     window.addEventListener('resize', this.resize);
@@ -41,6 +44,8 @@ class WebGLBody {
   }
   private render = () => {
     requestAnimationFrame(this.render);
+    
+    this.controls.update();
     this.renderer.render(this.scene, this.camera);
   }
 
@@ -48,6 +53,7 @@ class WebGLBody {
   public renderer: WebGLRenderer;
   public scene: Scene;
   public camera: PerspectiveCamera;
+  public controls: any;
 
   public add(...object: Array<Object3D>) {
     this.scene.add(...object);

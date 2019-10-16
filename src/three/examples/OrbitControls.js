@@ -1170,5 +1170,5 @@ const MapControls = function (object, domElement) {
 MapControls.prototype = Object.create(THREE.EventDispatcher.prototype);
 MapControls.prototype.constructor = MapControls;
 
-export { OrbitControls, MapControls };
-
+// export { OrbitControls, MapControls };
+export default OrbitControls;
