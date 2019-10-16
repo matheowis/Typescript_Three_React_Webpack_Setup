@@ -1,7 +1,7 @@
 import { TOUCH, Vector3, Camera, MOUSE } from 'three';
 
-interface OribtControlsType {
-  new(camera: Camera, domElement: HTMLElement): any;
+export interface OribtControlsType {
+  new(camera: Camera, domElement: HTMLElement): this;
   autoRotate: boolean;
   autoRotateSpeed: number;
   dampingFactor: number;

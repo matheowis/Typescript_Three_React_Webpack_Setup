@@ -1,6 +1,7 @@
 import { WebGLRenderer, PerspectiveCamera, Scene, Object3D } from 'three';
 // import {OrbitControls,MapControls} from './examples/OrbitControls';
-import OrbitControls from './examples/OrbitControls'
+import OrbitControls,{OribtControlsType} from './examples/OrbitControls';
+
 interface IWebGL_Body {
   antialias?: boolean,
   fullScreen?: boolean,
@@ -53,7 +54,7 @@ class WebGLBody {
   public renderer: WebGLRenderer;
   public scene: Scene;
   public camera: PerspectiveCamera;
-  public controls: any;
+  public controls: OribtControlsType;
 
   public add(...object: Array<Object3D>) {
     this.scene.add(...object);
