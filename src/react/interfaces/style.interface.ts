@@ -1,5 +1,6 @@
 
 type PositionType = "absolute" | "relative";
+type OverflowType = "hidden" | "visible";
 
 export interface IstyleSheet {
   [testProp: string]: {
@@ -7,6 +8,7 @@ export interface IstyleSheet {
     height?: string | number,
     backgroundColor?: string,
     color?: string,
-    position?: string & PositionType
+    position?: string & PositionType,
+    overflow?: string & OverflowType,
   }
 }

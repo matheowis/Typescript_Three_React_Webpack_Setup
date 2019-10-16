@@ -6,17 +6,18 @@ const styles: IstyleSheet = {
   canvasContainer: {
     width: '100%',
     height: '100%',
-    position: 'absolute'
+    position: 'absolute',
+    overflow: 'hidden'
   },
 };
 
-interface CanvasProps {
+interface WebGLContainerProps {
   classes: {
     canvasContainer: string
   },
 }
 
-class Canvas extends React.Component<CanvasProps, {}> {
+class WebGLContainer extends React.Component<WebGLContainerProps, {}> {
   // private canvasRef = React.createRef();
 
   public render() {
@@ -29,4 +30,4 @@ class Canvas extends React.Component<CanvasProps, {}> {
 
 }
 
-export default InjectStyles(styles)<CanvasProps>(Canvas);
+export default InjectStyles(styles)<WebGLContainerProps>(WebGLContainer);
