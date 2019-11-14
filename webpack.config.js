@@ -1,8 +1,15 @@
 const path = require('path');
 
+const PATHS = {
+  src: path.join(__dirname, './src'),
+  dist: path.join(__dirname, './dist')
+}
+
 module.exports = {
-  entry: './src/index.ts',
-  devtool: 'inline-source-map',
+  entry:{
+    "bundle": PATHS.src + '/index.ts'
+  },
+  // devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -16,8 +23,12 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    // filename: 'bundle.js',
+    // path: path.resolve(__dirname, 'dist'),
+    path: PATHS.build,
+    filename: '[name].js',
+    library: 'InitiateCanvasTest',
+    libraryTarget: 'umd'
     // chunkFilename:'bundle.chunk.js',
   },
   devServer: {

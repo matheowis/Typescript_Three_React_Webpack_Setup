@@ -1,13 +1,13 @@
 import { WebGLRenderer, PerspectiveCamera, Scene, Object3D } from 'three';
 // import {OrbitControls,MapControls} from './examples/OrbitControls';
-import OrbitControls,{OribtControlsType} from './examples/OrbitControls';
+import OrbitControls, { OribtControlsType } from './examples/OrbitControls';
 
 interface IWebGL_Body {
   antialias?: boolean,
   fullScreen?: boolean,
   FOV?: number,
   cameraDistance?: number,
-  container: HTMLElement,
+  container: HTMLElement | null,
 }
 
 const defaultProps: IWebGL_Body = {
@@ -22,22 +22,25 @@ class WebGLBody {
   constructor(props: IWebGL_Body = defaultProps) {
     const { antialias, FOV, cameraDistance, container } = { ...defaultProps, ...props };
     this.renderer = new WebGLRenderer({ antialias });
-    this.container = container;
+    if(container){
+      this.container = container;
+    }else{
+      this.container = new HTMLElement();
+    }
     this.scene = new Scene();
     this.camera = new PerspectiveCamera(FOV, this.container.clientWidth / this.container.clientHeight, 0.1, 2000);
 
     this.container.append(this.renderer.domElement);
     this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
-    
-    this.controls = new OrbitControls(this.camera,this.renderer.domElement);
-    this.camera.position.z = cameraDistance;
+
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    this.camera.position.z = cameraDistance || 100;
 
     window.addEventListener('resize', this.resize);
 
     this.render();
   }
 
-  private animationId: number;
   private resize = () => {
     this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
     this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
@@ -45,7 +48,7 @@ class WebGLBody {
   }
   private render = () => {
     requestAnimationFrame(this.render);
-    
+
     this.controls.update();
     this.renderer.render(this.scene, this.camera);
   }
@@ -63,7 +66,7 @@ class WebGLBody {
     this.scene.remove(...object)
   }
   public destroy() {
-    cancelAnimationFrame(this.animationId);
+    // cancelAnimationFrame(this.animationId);
     window.removeEventListener('resize', this.resize);
   }
 }
