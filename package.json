@@ -1,8 +1,9 @@
 {
   "name": "mw-my-ts-lib",
-  "version": "1.0.5",
+  "version": "1.0.9",
   "description": "My npm package written in TS",
-  "main": "dist/bundle.js",
+  "main": "dist/src",
+  "types": "dist/src",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",

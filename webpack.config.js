@@ -2,12 +2,12 @@ const path = require('path');
 
 const PATHS = {
   src: path.join(__dirname, './src'),
-  dist: path.join(__dirname, './dist')
+  dist: path.join(__dirname, './dist/src')
 }
 
 module.exports = {
   entry:{
-    "bundle": PATHS.src + '/index.ts'
+    "index": PATHS.src + '/index.ts'
   },
   // devtool: 'inline-source-map',
   module: {
@@ -25,9 +25,9 @@ module.exports = {
   output: {
     // filename: 'bundle.js',
     // path: path.resolve(__dirname, 'dist'),
-    path: PATHS.build,
+    path: PATHS.dist,
     filename: '[name].js',
-    library: 'InitiateCanvasTest',
+    // library: 'InitiateCanvasTest',
     libraryTarget: 'umd'
     // chunkFilename:'bundle.chunk.js',
   },

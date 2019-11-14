@@ -1,7 +1,7 @@
 import { InitializeReact } from './react/ReactApp';
-import {initiateThree} from './three/ThreeApp'
+import { initiateThree } from './three/ThreeApp'
 
-function InitiateCanvasTest(){
+export function InitiateCanvasTest(): void {
   console.log('Magic is happening!!!!');
   InitializeReact().then(renderWebGL);
 
@@ -11,4 +11,6 @@ function InitiateCanvasTest(){
   }
 }
 
-export { InitiateCanvasTest };
+export function DoAlert(text: number): void {
+  alert(`ALERT!@# ${text}`);
+}
